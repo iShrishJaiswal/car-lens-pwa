@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/AuthProvider";
-import { KeyRound, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
