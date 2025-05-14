@@ -26,7 +26,7 @@ const ForgotPassword = () => {
     });
     const onSubmit = async (values: z.infer<typeof emailSchema>) => {
         await supabase.auth.resetPasswordForEmail(values.email, {
-            redirectTo: "http://localhost:3000/update-password", // or your prod URL
+            redirectTo: import.meta.env.VITE_PASSWORD_RESET_REDIRECT_URL,
         });
     };
     return (
