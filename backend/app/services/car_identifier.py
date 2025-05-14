@@ -1,7 +1,8 @@
-import os
-from openai import OpenAI
-from dotenv import load_dotenv
 import json
+import os
+
+from dotenv import load_dotenv
+from openai import OpenAI
 
 load_dotenv()
 
@@ -45,24 +46,33 @@ class CarIdentifierService:
             "properties": {
                 "make": {"type": "string"},
                 "model": {"type": "string"},
-                "year": {"type": "integer"},
+                "generation": {
+                    "type": "string",
+                    "description": "Car generation formatted as '1st Generation', '2nd Generation', etc. Use ordinal English format only. Return null if unknown.",
+                },
                 "body_style": {"type": "string"},
                 "engine": {"type": "string"},
                 "horsepower_hp": {"type": "integer"},
                 "acceleration_0_100_kmph_sec": {"type": "number"},
                 "top_speed_kmph": {"type": "integer"},
-                "drivetrain": {"type": "string"},
+                "drivetrain": {
+                    "type": "string",
+                    "description": "Drivetrain formatted as 'FWD', 'RWD', 'AWD', or '4WD'. Return null if unknown.",
+                },
                 "fuel_type": {"type": "string"},
-                "original_msrp_usd": {"type": "integer"},
-                "current_value_usd": {"type": "integer"},
-                "rarity": {"type": "string"},
+                "original_msrp_cad": {"type": "integer"},
+                "current_value_cad": {"type": "integer"},
+                "rarity": {
+                    "type": "string",
+                    "description": "Only choose one of the following for 'rarity': 'Common', 'Uncommon', 'Rare', 'Legendary', 'Limited', or 'Exclusive'. If unsure, choose 'Common'",
+                },
                 "description": {"type": "string"},
                 "confidence": {"type": "number"},
             },
             "required": [
                 "make",
                 "model",
-                "year",
+                "generation",
                 "body_style",
                 "engine",
                 "horsepower_hp",
@@ -70,8 +80,8 @@ class CarIdentifierService:
                 "top_speed_kmph",
                 "drivetrain",
                 "fuel_type",
-                "original_msrp_usd",
-                "current_value_usd",
+                "original_msrp_cad",
+                "current_value_cad",
                 "rarity",
                 "description",
                 "confidence",

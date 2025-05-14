@@ -1,0 +1,25 @@
+import { useTheme } from "@/components/ui/theme-provider";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+
+export function ThemeSelect() {
+    const { theme, setTheme } = useTheme();
+
+    return (
+        <Select value={theme} onValueChange={setTheme}>
+            <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select Theme" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="light">Light</SelectItem>
+                <SelectItem value="dark">Dark</SelectItem>
+                <SelectItem value="system">System</SelectItem>
+            </SelectContent>
+        </Select>
+    );
+}
