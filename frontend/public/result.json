@@ -1,0 +1,17 @@
+{
+  "make": "Toyota",
+  "model": "Highlander",
+  "year": 2010,
+  "body_style": "SUV",
+  "engine": "3.5L V6",
+  "horsepower_hp": 270,
+  "acceleration_0_100_kmph_sec": 7.8,
+  "top_speed_kmph": 180,
+  "drivetrain": "AWD",
+  "fuel_type": "Gasoline",
+  "original_msrp_usd": 30750,
+  "current_value_usd": 10000,
+  "rarity": "Common",
+  "description": "The 2010 Toyota Highlander is a mid-sized SUV known for its spacious interior, smooth ride, and strong reputation for reliability. It features a powerful V6 engine and available all-wheel drive, making it a versatile choice for families.",
+  "confidence": 0.9
+}
