@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from services.car_identifier import CarIdentifierService
-from models.car import CarInfo, IdentifyCarInput
+from app.services.car_identifier import CarIdentifierService
+from app.models.car import CarInfo, IdentifyCarInput
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
