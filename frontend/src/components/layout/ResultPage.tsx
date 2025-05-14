@@ -77,7 +77,7 @@ export default function ResultPage() {
                     ← Back
                 </Button>
                 <Heart
-                    fill={car.is_favourite ? "red" : "non"}
+                    fill={car.is_favourite ? "red" : "none"}
                     className="hover:cursor-pointer hover:text-red-500 transition-colors"
                     onClick={() =>
                         toggleFav({

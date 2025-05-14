@@ -7,7 +7,7 @@ import CarLens from "../assets/carlens.svg?react";
 const Welcome = () => {
     return (
         <main className="min-h-screen max-w-2xl mx-auto bg-background text-foreground flex flex-col justify-center items-center px-4 py-10 gap-6">
-            <div className="absolute top-4 right-4">
+            <div className="absolute top-4 w-full max-w-2xl px-4 flex justify-end">
                 <ModeToggle />
             </div>
             <CarLens className="w-40 h-40 mb-4" />
