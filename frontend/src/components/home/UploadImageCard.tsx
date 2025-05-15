@@ -65,7 +65,7 @@ const UploadImageCard: React.FC<UploadImageCardProps> = ({
             try {
                 setLoading(true);
                 const response = await axios.post(
-                    import.meta.env.VITE_BACKEND_URL,
+                    `${import.meta.env.VITE_BACKEND_URL}/get_car_info`,
                     {
                         base64_image: base64String,
                     }
