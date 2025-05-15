@@ -44,7 +44,7 @@ export function BottomNav() {
                                         isActive
                                             ? "text-primary font-semibold"
                                             : "text-muted-foreground"
-                                    } hover:text-foreground`}
+                                    } hover:text-primary/70`}
                                 >
                                     {Icon}
                                     <span className="text-xs">{label}</span>

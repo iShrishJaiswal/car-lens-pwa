@@ -1,4 +1,6 @@
+import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { persistQueryClient } from "@tanstack/react-query-persist-client";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
 import ForgotPassword from "./components/auth/ForgotPassword";
@@ -14,8 +16,17 @@ import ResultPage from "./components/layout/ResultPage";
 import Settings from "./components/settings/Settings";
 import Welcome from "./components/Welcome";
 import { AuthProvider } from "./context/AuthProvider";
-
 const queryClient = new QueryClient();
+
+const localStoragePersister = createSyncStoragePersister({
+    storage: window.localStorage,
+});
+
+persistQueryClient({
+    queryClient,
+    persister: localStoragePersister,
+    maxAge: Infinity,
+});
 
 function App() {
     return (
