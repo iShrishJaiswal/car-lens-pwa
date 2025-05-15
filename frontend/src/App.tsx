@@ -13,29 +13,37 @@ import PrivateRoute from "./components/layout/PrivateRoute";
 import ResultPage from "./components/layout/ResultPage";
 import Settings from "./components/settings/Settings";
 import Welcome from "./components/Welcome";
+import { AuthProvider } from "./context/AuthProvider";
 
 const queryClient = new QueryClient();
 
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
-            <Routes>
-                <Route path="/" element={<Welcome />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/forgotpassword" element={<ForgotPassword />} />
-                <Route path="/update-password" element={<UpdatePassword />} />
-
-                <Route element={<PrivateRoute />}>
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/result" element={<ResultPage />} />
-                    <Route path="/history" element={<History />} />
-                    <Route path="/settings" element={<Settings />} />
-                    <Route path="/favourites" element={<Favourites />} />
-                </Route>
-                <Route path="/*" element={<NotFound />} />
-            </Routes>
-            <Toaster />
+            <AuthProvider>
+                <Routes>
+                    <Route path="/" element={<Welcome />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route
+                        path="/forgotpassword"
+                        element={<ForgotPassword />}
+                    />
+                    <Route
+                        path="/update-password"
+                        element={<UpdatePassword />}
+                    />
+                    <Route element={<PrivateRoute />}>
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/result" element={<ResultPage />} />
+                        <Route path="/history" element={<History />} />
+                        <Route path="/settings" element={<Settings />} />
+                        <Route path="/favourites" element={<Favourites />} />
+                    </Route>
+                    <Route path="/*" element={<NotFound />} />
+                </Routes>
+                <Toaster />
+            </AuthProvider>
         </QueryClientProvider>
     );
 }
