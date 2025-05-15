@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom";
+import { useAuth } from "@/context/AuthProvider";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import CarLens from "../assets/carlens.svg?react";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./ui/mode-toggle";
-//  import { ReactComponent as CarLens } from "./carlens.svg";
-import CarLens from "../assets/carlens.svg?react";
 
 const Welcome = () => {
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (user) {
+            navigate("/home", { replace: true });
+        }
+    }, [user, navigate]);
     return (
         <main className="min-h-screen max-w-2xl mx-auto bg-background text-foreground flex flex-col justify-center items-center px-4 py-10 gap-6">
             <div className="absolute top-4 w-full max-w-2xl px-4 flex justify-end">
