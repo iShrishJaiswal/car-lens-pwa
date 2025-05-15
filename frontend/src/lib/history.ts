@@ -25,11 +25,11 @@ export const fetchHistory = async (user_id: string) => {
             search_history!inner(user_id, created_at, image_path, is_favourite)
             `
         )
-        .eq("search_history.user_id", user_id);  
+        .eq("search_history.user_id", user_id);
     if (error) {
         throw new Error(`Error fetching search history: ${error.message}`);
     }
-    const res = data.map(({search_history , ...car}: any) => {
+    const res = data.map(({ search_history, ...car }: any) => {
         const created_at = search_history[0].created_at;
         const image_path = search_history[0].image_path;
         const is_favourite = search_history[0].is_favourite;
@@ -39,7 +39,7 @@ export const fetchHistory = async (user_id: string) => {
             image_path,
             is_favourite,
         };
-    })
+    });
     return res as CarInfoUI[];
 };
 
@@ -50,12 +50,13 @@ export const addToHistory = async ({
     image_path,
     is_favourite,
 }: SearchHistoryEntry) => {
-    const { error } = await supabase.from("search_history").upsert(
-        { user_id, car_id, created_at, image_path, is_favourite },
-        {
-            onConflict: "user_id,car_id",
-        }
-    );
+    const { error } = await supabase.from("search_history").insert({
+        user_id,
+        car_id,
+        created_at,
+        image_path,
+        is_favourite,
+    });
 
     if (error) {
         throw new Error(`Error adding to history: ${error.message}`);
