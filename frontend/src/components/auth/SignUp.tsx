@@ -37,9 +37,10 @@ const SignUp = () => {
         if (error) {
             toast.error("Sign up failed. Please try again.");
         } else {
-            toast.success(
-                "Sign up successful! Please check your email for verification."
-            );
+            toast.success("Sign up successful!", {
+                description: "Please check your email for verification.",
+                duration: 7000,
+            });
             navigate("/login");
         }
     };

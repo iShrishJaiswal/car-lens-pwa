@@ -53,11 +53,18 @@ const UploadImageCard: React.FC<UploadImageCardProps> = ({
     const sanitize = (str: string) => str.toLowerCase().replace(/\s+/g, "_");
 
     const handleClick = () => {
+        let longWaitToastId: string | number;
+
         if (!selectedFile) {
             toast.warning("Please select an image file first.");
             return;
         }
-        console.log("Selected file:", selectedFile);
+        const timeout = setTimeout(() => {
+            longWaitToastId = toast.warning(
+                "⚠️ This is taking longer than usual..."
+            );
+        }, 4000);
+        
         const reader = new FileReader();
         reader.onloadend = async () => {
             const base64String = reader.result?.toString().split(",")[1];
@@ -90,6 +97,8 @@ const UploadImageCard: React.FC<UploadImageCardProps> = ({
                     is_favourite: false,
                 });
                 onResult(carDataUI.id);
+                clearTimeout(timeout);
+                if (longWaitToastId) toast.dismiss(longWaitToastId);
             } catch (error) {
                 console.error("Error fetching car details:", error);
             } finally {
